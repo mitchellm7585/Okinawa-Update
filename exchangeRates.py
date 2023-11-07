@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-from re import search
+from re import findall
 
 
 def exchange_rates(chance_data, lucky_data):
@@ -11,8 +11,7 @@ def exchange_rates(chance_data, lucky_data):
         chance_content = chance_data.text
         chance_soup = BeautifulSoup(chance_content, 'html.parser')
         chance_rates = chance_soup.find("div", {"class": "elementor-post__excerpt"})
-        chance_yen_rate = search(r'＄→￥ (\d+\.\d+)', str(chance_rates))[0]
-        chance_dollar_rate = search(r'￥→＄ (\d+\.\d+)', str(chance_rates))[0]
+        chance_yen_rate, chance_dollar_rate = findall(r'(\d+\.\d+)', str(chance_rates))
 
     lucky_yen_rate = 0
     lucky_dollar_rate = 0
@@ -20,7 +19,6 @@ def exchange_rates(chance_data, lucky_data):
         lucky_content = lucky_data.text
         lucky_soup = BeautifulSoup(lucky_content, 'html.parser')
         lucky_rates = lucky_soup.find(id="entryBody")
-        lucky_yen_rate = search(r'＄⇒￥＝(\d+\.\d+)', str(lucky_rates))[0]
-        lucky_dollar_rate = search(r'￥⇒＄＝(\d+\.\d+)', str(lucky_rates))[0]
+        lucky_yen_rate, lucky_dollar_rate = findall(r'(\d+\.\d+)', str(lucky_rates))
 
     return chance_yen_rate, chance_dollar_rate, lucky_yen_rate, lucky_dollar_rate
