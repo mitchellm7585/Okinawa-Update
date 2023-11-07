@@ -30,21 +30,21 @@ def send_email():
     # HTML formatting for DataFrame to appear as table
     html = f"""\
     <html>
-        <head><b> Okinawa Updates </b></head>
         <body>
-        <br>
+        <h1>Okinawa Updates</h1>
+        
         <b>Yen Rate: </b> {jpy}
-        <br><br>
-        <b>Gas Prices on Base</b><br>
-        {gas.to_html(index=False)}<br>
-        <br>
-        <b>Chance Exchange Rates</b><br>
-        {chance_yen_rate}<br>
-        {chance_dollar_rate}<br>
-        <br>
-        <b>Lucky Exchange Rates</b><br>
-        {lucky_yen_rate}<br>
-        {lucky_dollar_rate}<br>
+        
+        <h3>Gas Prices on Base</h3>
+        {gas.to_html(index=False)}
+        
+        <h3><u>Chance Exchange Rates</u></h3>
+        ＄→￥: {chance_yen_rate}<br>
+        ￥→＄: {chance_dollar_rate}
+        
+        <h3><u>Lucky Exchange Rates</u></h3>
+        ＄→￥: {lucky_yen_rate}<br>
+        ￥→＄: {lucky_dollar_rate}
         </body>
     </html>"""
 
@@ -79,6 +79,7 @@ jpy = rates_data.json().get('conversion_rate') if rates_data.status_code == 200 
 
 # Get gas prices
 gas = gasPrices.get_gas_prices(gas_data)
+
 # Add JPY equivalent
 prices = [round(float(price[1:]) * jpy, 3) for price in gas.get('Per Liter')]
 gas.insert(3, 'JPY Per Liter', prices)
