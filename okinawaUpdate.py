@@ -1,9 +1,10 @@
 from requests_html import HTMLSession
-import smtplib
+from smtplib import SMTP
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from dotenv import load_dotenv
 from os import getenv as env
+from datetime import date
 import gasPrices
 import exchangeRates
 
@@ -15,17 +16,15 @@ chance_website = env("CHANCE_EXCHANGE")
 lucky_website = env("LUCKY_EXCHANGE")
 
 tables = {}
-user = env('EMAIL')
-password = env('PASSWORD')
-recipients = env('RECIPIENTS').split(',')
+user = env("EMAIL")
+password = env("PASSWORD")
+recipients = env("RECIPIENTS").split(',')
 
 
 def send_email():
-    # Message header
     message = MIMEMultipart()
-    # message['To'] = recipients
-    # message['From'] = user
-    message['Subject'] = 'Okinawa Updates'
+    message['From'] = 'Okinawa Update'
+    message['Subject'] = f'Okinawa Update {date.today()}'
 
     # HTML formatting for DataFrame to appear as table
     html = f"""\
@@ -53,7 +52,7 @@ def send_email():
     message.attach(message_text)
 
     # Establish secure GMail connection
-    server = smtplib.SMTP('smtp.gmail.com:587')
+    server = SMTP('smtp.gmail.com:587')
     server.ehlo('Gmail')
     server.starttls()
 
