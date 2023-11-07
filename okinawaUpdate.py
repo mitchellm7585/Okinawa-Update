@@ -9,10 +9,10 @@ import exchangeRates
 
 load_dotenv()
 
-gas_website = "https://pacific.afn.mil/Gas-Prices/"
-rates_website = f"https://v6.exchangerate-api.com/v6/{env('EXCHANGE_RATE_API')}/pair/USD/JPY"
-chance_website = "https://exchange-chancecenter.com/"
-lucky_website = "https://ameblo.jp/luckyexchangeltd/"
+gas_website = env("BASE_GAS_PRICES")
+rates_website = env("EXCHANGE_RATES")
+chance_website = env("CHANCE_EXCHANGE")
+lucky_website = env("LUCKY_EXCHANGE")
 
 tables = {}
 user = env('EMAIL')
