@@ -1,11 +1,10 @@
-import pandas as pd
-from bs4 import BeautifulSoup
-from io import StringIO
-
-
 def get_gas_prices(gas_data):
     """ Parse the Gas Prices website and find values for Okinawa. """
 
+    import pandas as pd
+    from bs4 import BeautifulSoup
+    from io import StringIO
+    
     tables = None
     if gas_data.status_code == 200:
         content = gas_data.text

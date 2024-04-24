@@ -1,9 +1,8 @@
-from bs4 import BeautifulSoup
-from re import findall
-
-
 def exchange_rates(chance_data, lucky_data):
     """ Obtain exchange rates from Chance and Lucky exchange. """
+    
+    from bs4 import BeautifulSoup
+    from re import findall
 
     chance_yen_rate = 0
     chance_dollar_rate = 0
