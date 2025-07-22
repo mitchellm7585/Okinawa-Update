@@ -1,6 +1,5 @@
 #!/usr/bin/python
 
-from requests_html import HTMLSession
 from dotenv import load_dotenv
 from bs4 import BeautifulSoup
 from re import findall
@@ -38,10 +37,9 @@ def extract_rates(data, **kwargs):
 def local_rates():
     """Obtain exchange rates from local exchanges"""
 
-    with HTMLSession() as session:
-        chance_data = get_website('CHANCE_EXCHANGE')
-        lucky_data = get_website('LUCKY_EXCHANGE')
-        uluma_data = get_website('ULUMA_EXCHANGE')
+    chance_data = get_website('CHANCE_EXCHANGE')
+    lucky_data = get_website('LUCKY_EXCHANGE')
+    uluma_data = get_website('ULUMA_EXCHANGE')
 
     chance_yen_rate, chance_dollar_rate = extract_rates(chance_data, name="div",
                                                         attrs={"class": "elementor-post__excerpt"})
