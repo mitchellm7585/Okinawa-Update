@@ -2,15 +2,15 @@
 
 from requests_html import HTMLSession
 from dotenv import load_dotenv
-from os import getenv as env
 from bs4 import BeautifulSoup
 from re import findall
 from collections import defaultdict
 import logging
 import sys, traceback
 
-logger = logging.getLogger(__name__)
-FORMAT = '%(asctime)s %(message)s'
+from get_website import get_website
+from ntfy import ntfy
+
 load_dotenv()
 
 
@@ -39,9 +39,9 @@ def local_rates():
     """Obtain exchange rates from local exchanges"""
 
     with HTMLSession() as session:
-        chance_data = session.get(env('CHANCE_EXCHANGE'))
-        lucky_data = session.get(env('LUCKY_EXCHANGE'))
-        uluma_data = session.get(env('ULUMA_EXCHANGE'))
+        chance_data = get_website('CHANCE_EXCHANGE')
+        lucky_data = get_website('LUCKY_EXCHANGE')
+        uluma_data = get_website('ULUMA_EXCHANGE')
 
     chance_yen_rate, chance_dollar_rate = extract_rates(chance_data, name="div",
                                                         attrs={"class": "elementor-post__excerpt"})
@@ -75,24 +75,20 @@ def local_rates():
     return yen_rate, dollar_rate
 
 
-def ntfy():
-    """Post notification"""
-
+if __name__ == "__main__":
+    logger = logging.getLogger(__name__)
+    FORMAT = '%(asctime)s %(message)s'
     logging.basicConfig(filename='rates.log', format=FORMAT, level=logging.INFO)
     logger.info('Started')
+
     yen_rate, dollar_rate = local_rates()
     yen_rates = '\n'.join(yen_rate)
     dollar_rates = '\n'.join(dollar_rate)
 
-    with HTMLSession() as session:
-        logger.info('Posting')
-        session.post(f"{env('EXCHANGE_POST')}",
-                     data=f"ï¼âï¿¥\n{yen_rates}\n\nï¿¥âï¼\n{dollar_rates}".encode(encoding='utf-8'), #Dollar to Yen and Yen to Dollar
-                     headers={"Tags": "currency_exchange",
-                              "Title": "Exchange Rates"}
-                     )
+    ntfy(url="EXCHANGE_POST",
+         data=f"¥\n{yen_rates}\n\n¥\n{dollar_rates}".encode(encoding='utf-8'),
+         # Dollar to Yen and Yen to Dollar
+         headers={"Tags": "currency_exchange",
+                  "Title": "Exchange Rates"}
+         )
     logger.info('Finished')
-
-
-if __name__ == "__main__":
-    ntfy()

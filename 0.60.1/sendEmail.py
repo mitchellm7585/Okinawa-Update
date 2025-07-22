@@ -1,13 +1,9 @@
-from requests_html import HTMLSession
 from smtplib import SMTP
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from dotenv import load_dotenv
 from os import getenv as env
 from datetime import date
-import gasPrices
-import exchangeRates
-import accessSecretVersion
 
 load_dotenv()
 

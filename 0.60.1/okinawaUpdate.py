@@ -5,8 +5,7 @@ from email.mime.text import MIMEText
 from dotenv import load_dotenv
 from os import getenv as env
 from datetime import date
-import gasPrices
-import exchangeRates
+from old import exchangeRates, gasPrices
 
 load_dotenv()
 

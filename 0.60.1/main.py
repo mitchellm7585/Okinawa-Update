@@ -1,7 +1,5 @@
 from requests_html import HTMLSession
-import gasPrices
-import exchangeRates
-import accessSecretVersion
+from old import accessSecretVersion, exchangeRates, gasPrices
 from smtplib import SMTP
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText

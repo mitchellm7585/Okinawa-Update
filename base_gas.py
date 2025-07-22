@@ -76,7 +76,6 @@ if __name__ == "__main__":
     logger.info('Started')
     gas_prices = get_gas_prices()
     if gas_prices:
-        logger.info('Posting')
         ntfy(url="GAS_PRICES_POST",
              data=f"Okinawa Gas Prices\n\n{gas_prices}".encode(encoding='utf-8'),
              headers={"Tags": "car",
