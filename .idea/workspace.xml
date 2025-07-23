@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="751266bc-ea19-4374-bdee-016f3eb33fe5" name="Changes" comment="Update tomorrow_forecast.py, weather.py, and yen_rate.py&#10;&#10;Changed tomorrow_forecast.py, weather.py, and yen_rate.py to use get_website.py and ntfy.py. Made changes to match new code formatting.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/0.60.1/accessSecretVersion.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/0.60.1/exchangeRates.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/0.60.1/gasPrices.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/0.60.1/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/0.60.1/okinawaUpdate.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/0.60.1/sendEmail.py" beforeDir="false" />
-    </list>
+    <list default="true" id="751266bc-ea19-4374-bdee-016f3eb33fe5" name="Changes" comment="Removed files from version 0.60.1" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -123,7 +115,15 @@
       <option name="project" value="LOCAL" />
       <updated>1753171551463</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Removed files from version 0.60.1">
+      <option name="closed" value="true" />
+      <created>1753237105164</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1753237105164</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -134,6 +134,7 @@
     <MESSAGE value="Create ntfy.py&#10;&#10;Created ntfy module to minimize duplicate code across the project. Moved logging and price fetching within base_gas to the __main__ function." />
     <MESSAGE value="Update rates.py&#10;&#10;Changed rates.py to use get_website.py and ntfy.py. Made changes to match new code formatting." />
     <MESSAGE value="Update tomorrow_forecast.py, weather.py, and yen_rate.py&#10;&#10;Changed tomorrow_forecast.py, weather.py, and yen_rate.py to use get_website.py and ntfy.py. Made changes to match new code formatting." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update tomorrow_forecast.py, weather.py, and yen_rate.py&#10;&#10;Changed tomorrow_forecast.py, weather.py, and yen_rate.py to use get_website.py and ntfy.py. Made changes to match new code formatting." />
+    <MESSAGE value="Removed files from version 0.60.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed files from version 0.60.1" />
   </component>
 </project>
