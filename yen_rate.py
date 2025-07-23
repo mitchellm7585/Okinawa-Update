@@ -1,17 +1,12 @@
 #!/usr/bin/python
 
-from requests_html import HTMLSession
 from dotenv import load_dotenv
-from os import getenv as env
 from bs4 import BeautifulSoup
-from re import findall
-from collections import defaultdict
 import logging
 
 from get_website import get_website
+from ntfy import ntfy
 
-logger = logging.getLogger(__name__)
-FORMAT = '%(asctime)s %(message)s'
 load_dotenv()
 
 
@@ -32,22 +27,18 @@ def get_jpy():
     return rate
 
 
-def ntfy():
-    """Post notification"""
-
+if __name__ == "__main__":
+    logger = logging.getLogger(__name__)
+    FORMAT = '%(asctime)s %(message)s'
     logging.basicConfig(filename='yen_rate.log', format=FORMAT, level=logging.INFO)
     logger.info('Started')
-    rate = get_jpy()
 
-    with HTMLSession() as session:
-        logger.info('Posting')
-        session.post(f"{env('EXCHANGE_POST')}",
-                     data=f"¥{rate}".encode(encoding='utf-8'),
-                     headers={"Tags": "yen",
-                              "Title": "Today\'s Yen Rate"}
-                     )
+    _rate = get_jpy()
+
+    ntfy(url="EXCHANGE_POST",
+         data=f"¥{_rate}".encode(encoding='utf-8'),
+         headers={"Tags": "yen",
+                  "Title": "Today\'s Yen Rate"}
+         )
+
     logger.info('Finished')
-
-
-if __name__ == "__main__":
-    ntfy()

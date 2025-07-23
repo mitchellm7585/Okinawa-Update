@@ -2,19 +2,17 @@
 
 import logging
 from dotenv import load_dotenv
-from os import getenv as env
-from requests_html import HTMLSession
 
-logger = logging.getLogger(__name__)
-FORMAT = '%(asctime)s %(message)s'
+from get_website import get_website
+from ntfy import ntfy
+
 load_dotenv()
 
 
 def get_weather():
     """Retrieves the 1-day weather forecast from Acuweather"""
 
-    with HTMLSession() as session:
-        weather_api = session.get(env('GUSHIKAWA'))
+    weather_api = get_website('GUSHIKAWA')
 
     weather = ''
     link = ''
@@ -32,24 +30,20 @@ def get_weather():
     return weather, link
 
 
-def ntfy():
-    """Send notification"""
-
+if __name__ == "__main__":
+    logger = logging.getLogger(__name__)
+    FORMAT = '%(asctime)s %(message)s'
     logging.basicConfig(filename='weather.log', format=FORMAT, level=logging.INFO)
     logger.info('Started')
+
     weather, link = get_weather()
 
-    with HTMLSession() as session:
-        logger.info('Posting')
-        session.post(f"{env('WEATHER_POST')}",
-                     data=f"Today\'s Weather courtesy of accuweather.com\n\n"
-                          f"{weather}".encode(encoding='utf-8'),
-                     headers={"Tags": "thermometer",
-                              "Title": "Today\'s Forecast",
-                              "Click": link}
-                     )
+    ntfy(url="WEATHER_POST",
+         data=f"Today\'s Weather courtesy of accuweather.com\n\n"
+              f"{weather}".encode(encoding='utf-8'),
+         headers={"Tags": "thermometer",
+                  "Title": "Today\'s Forecast",
+                  "Click": link}
+         )
+
     logger.info('Finished')
-
-
-if __name__ == "__main__":
-    ntfy()

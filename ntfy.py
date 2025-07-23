@@ -2,12 +2,13 @@
 
 """Pushes information to ntfy"""
 from requests_html import HTMLSession
+import logging
 
 from dotenv import load_dotenv
 from os import getenv as env
 
 load_dotenv()
-
+logger = logging.getLogger(__name__)
 
 def ntfy(url, data, headers):
     """Post notification
@@ -22,6 +23,7 @@ def ntfy(url, data, headers):
     """
 
     with HTMLSession() as session:
+        logger.info('Posting')
         session.post(f"{env(url)}",
                      data=data,
                      headers=headers
