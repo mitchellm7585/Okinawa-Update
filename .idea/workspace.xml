@@ -4,21 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="751266bc-ea19-4374-bdee-016f3eb33fe5" name="Changes" comment="Create ntfy.py&#10;&#10;Created ntfy module to minimize duplicate code across the project. Moved logging and price fetching within base_gas to the __main__ function.">
-      <change afterPath="$PROJECT_DIR$/.idea/Okinawa_Update.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accessSecretVersion.py" beforeDir="false" afterPath="$PROJECT_DIR$/0.60.1/accessSecretVersion.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/base_gas.py" beforeDir="false" afterPath="$PROJECT_DIR$/base_gas.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exchangeRates.py" beforeDir="false" afterPath="$PROJECT_DIR$/0.60.1/exchangeRates.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gasPrices.py" beforeDir="false" afterPath="$PROJECT_DIR$/0.60.1/gasPrices.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/0.60.1/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ntfy.py" beforeDir="false" afterPath="$PROJECT_DIR$/ntfy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/okinawaUpdate.py" beforeDir="false" afterPath="$PROJECT_DIR$/0.60.1/okinawaUpdate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rates.py" beforeDir="false" afterPath="$PROJECT_DIR$/rates.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sendEmail.py" beforeDir="false" afterPath="$PROJECT_DIR$/0.60.1/sendEmail.py" afterDir="false" />
+    <list default="true" id="751266bc-ea19-4374-bdee-016f3eb33fe5" name="Changes" comment="Update tomorrow_forecast.py, weather.py, and yen_rate.py&#10;&#10;Changed tomorrow_forecast.py, weather.py, and yen_rate.py to use get_website.py and ntfy.py. Made changes to match new code formatting.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/0.60.1/accessSecretVersion.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/0.60.1/exchangeRates.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/0.60.1/gasPrices.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/0.60.1/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/0.60.1/okinawaUpdate.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/0.60.1/sendEmail.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +34,7 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="0.70" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -114,7 +107,23 @@
       <option name="project" value="LOCAL" />
       <updated>1753023800517</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Update rates.py&#10;&#10;Changed rates.py to use get_website.py and ntfy.py. Made changes to match new code formatting.">
+      <option name="closed" value="true" />
+      <created>1753168127452</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1753168127452</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Update tomorrow_forecast.py, weather.py, and yen_rate.py&#10;&#10;Changed tomorrow_forecast.py, weather.py, and yen_rate.py to use get_website.py and ntfy.py. Made changes to match new code formatting.">
+      <option name="closed" value="true" />
+      <created>1753171551463</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1753171551463</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -123,6 +132,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Create get_driver.py and get_website.py&#10;&#10;Created get_website to minimize duplicate code throughout project. Added get_driver to work around errors using the requests module." />
     <MESSAGE value="Create ntfy.py&#10;&#10;Created ntfy module to minimize duplicate code across the project. Moved logging and price fetching within base_gas to the __main__ function." />
-    <option name="LAST_COMMIT_MESSAGE" value="Create ntfy.py&#10;&#10;Created ntfy module to minimize duplicate code across the project. Moved logging and price fetching within base_gas to the __main__ function." />
+    <MESSAGE value="Update rates.py&#10;&#10;Changed rates.py to use get_website.py and ntfy.py. Made changes to match new code formatting." />
+    <MESSAGE value="Update tomorrow_forecast.py, weather.py, and yen_rate.py&#10;&#10;Changed tomorrow_forecast.py, weather.py, and yen_rate.py to use get_website.py and ntfy.py. Made changes to match new code formatting." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update tomorrow_forecast.py, weather.py, and yen_rate.py&#10;&#10;Changed tomorrow_forecast.py, weather.py, and yen_rate.py to use get_website.py and ntfy.py. Made changes to match new code formatting." />
   </component>
 </project>
