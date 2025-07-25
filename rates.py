@@ -84,7 +84,7 @@ if __name__ == "__main__":
     dollar_rates = '\n'.join(dollar_rate)
 
     ntfy(url="EXCHANGE_POST",
-         data=f"¥\n{yen_rates}\n\n¥\n{dollar_rates}".encode(encoding='utf-8'),
+         data=f"$→¥\n{yen_rates}\n\n¥→$\n{dollar_rates}".encode(encoding='utf-8'),
          # Dollar to Yen and Yen to Dollar
          headers={"Tags": "currency_exchange",
                   "Title": "Exchange Rates"}
