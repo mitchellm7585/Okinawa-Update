@@ -3,6 +3,7 @@
 from dotenv import load_dotenv
 from bs4 import BeautifulSoup
 import logging
+from os import getenv as env
 
 from get_website import get_website
 from ntfy import ntfy
@@ -38,7 +39,8 @@ if __name__ == "__main__":
     ntfy(url="EXCHANGE_POST",
          data=f"¥{_rate}".encode(encoding='utf-8'),
          headers={"Tags": "yen",
-                  "Title": "Today\'s Yen Rate"}
+                  "Title": "Today\'s Yen Rate",
+                  "Click": f"{env('JPY_RATE')}"}
          )
 
     logger.info('Finished')

@@ -38,7 +38,8 @@ if __name__ == "__main__":
 
     weather, link = get_weather()
     ntfy(url="WEATHER_POST",
-         data=f"{weather}\n\nweather courtesy of accuweather.com".encode(encoding='utf-8'),
+         data=f"Tomorrow\'s Weather courtesy of accuweather.com\n\n"
+              f"{weather}".encode(encoding='utf-8'),
          headers={"Tags": "thermometer",
                   "Title": "Tomorrow\'s Forecast",
                   "Click": link}
