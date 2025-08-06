@@ -47,7 +47,12 @@ if __name__ == "__main__":
     logging.basicConfig(filename='weather.log', format=FORMAT, level=logging.INFO)
     logger.info('Started')
 
-    today = bool(sys.argv[1])   #False if empty string
+    # Today = False if empty or no string
+    try:
+        today = bool(sys.argv[1])
+    except IndexError:
+        today = False
+
     day = "Today" if today else "Tomorrow"
 
     weather, link = get_weather(today)
