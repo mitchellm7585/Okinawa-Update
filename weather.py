@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+import sys
 import logging
 from dotenv import load_dotenv
 
@@ -9,16 +10,26 @@ from ntfy import ntfy
 load_dotenv()
 
 
-def get_weather():
-    """Retrieves the 1-day weather forecast from Acuweather"""
+def get_weather(today=True):
+    """
+    Retrieves the weather forecast from Accuweather
 
-    weather_api = get_website('GUSHIKAWA')
+    :param today: day of forecast
+    :type today: bool
+    :return weather
+    :rtype: str
+    :return link
+    :rtype: str
+    """
+
+    weather_api = get_website('GUSHIKAWA') if today else get_website('GUSHIKAWA_TOMORROW')
 
     weather = ''
     link = ''
 
     if weather_api.status_code == 200:
-        forecast = weather_api.json()['DailyForecasts'][0]
+        data = weather_api.json()['DailyForecasts']
+        forecast = data[0] if today else data[1]
         min_temp = forecast['Temperature']['Minimum']['Value']
         max_temp = forecast['Temperature']['Maximum']['Value']
         day_summary = forecast['Day']['LongPhrase']
@@ -36,13 +47,21 @@ if __name__ == "__main__":
     logging.basicConfig(filename='weather.log', format=FORMAT, level=logging.INFO)
     logger.info('Started')
 
-    weather, link = get_weather()
+    # Today = False if empty or no string
+    try:
+        today = bool(sys.argv[1])
+    except IndexError:
+        today = False
+
+    day = "Today" if today else "Tomorrow"
+
+    weather, link = get_weather(today)
 
     ntfy(url="WEATHER_POST",
-         data=f"Today\'s Weather courtesy of accuweather.com\n\n"
+         data=f"{day}\'s Weather courtesy of accuweather.com\n\n"
               f"{weather}".encode(encoding='utf-8'),
          headers={"Tags": "thermometer",
-                  "Title": "Today\'s Forecast",
+                  "Title": f"{day}\'s Forecast",
                   "Click": link}
          )
 
