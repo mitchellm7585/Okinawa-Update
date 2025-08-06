@@ -47,14 +47,16 @@ if __name__ == "__main__":
     logging.basicConfig(filename='weather.log', format=FORMAT, level=logging.INFO)
     logger.info('Started')
 
-    today = bool(sys.argv[1])
+    today = bool(sys.argv[1])   #False if empty string
+    day = "Today" if today else "Tomorrow"
+
     weather, link = get_weather(today)
 
     ntfy(url="WEATHER_POST",
-         data=f"Today\'s Weather courtesy of accuweather.com\n\n"
+         data=f"{day}\'s Weather courtesy of accuweather.com\n\n"
               f"{weather}".encode(encoding='utf-8'),
          headers={"Tags": "thermometer",
-                  "Title": "Today\'s Forecast",
+                  "Title": f"{day}\'s Forecast",
                   "Click": link}
          )
 
